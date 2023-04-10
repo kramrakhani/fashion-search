@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fashion Search 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Fashion Search 2</h1>
+    <form id="search-form">
+        <label for="search_query">Enter a description:</label>
+        <input type="text" id="search_query" name="search_query">
+        <button type="submit">Search</button>
+    </form>
+    <div id="result">
+        <!-- The result image will be displayed here -->
+    </div>
+
+    <script>
+        $("#search-form").submit(function (event) {
+            event.preventDefault();
+            var searchQuery = $("#search_query").val();
+            $.post("/search", { search_query: searchQuery }, function (data) {
+                $("#result").html('<img src="' + data.image_url + '" alt="Matched image">');
+            });
+        });
+    </script>
+</body>
+</html>
