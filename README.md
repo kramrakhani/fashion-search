@@ -10,5 +10,6 @@ run the following in root directory using Terminal
 
 
 The FashionCLIP Model Wrapper
-!pip install -U fashion-clip
+
+      pip install -U fashion-clip
 
